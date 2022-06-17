@@ -4,9 +4,11 @@ pipeline {
     stage('Build') {
       steps {
         echo "building"
-        bat "cd ${workspace}\\com.parasoft.parabank.tests"
-        bat "mvn clean"
-        bat "mvn test"
+        bat '''
+          cd ${workspace}\\com.parasoft.parabank.tests"
+          mvn clean
+          mvn test
+          '''
         sleep 10
       }
     }

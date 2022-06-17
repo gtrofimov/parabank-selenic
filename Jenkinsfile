@@ -25,7 +25,9 @@ pipeline {
             echo "license.network.user=%LS_UNAME%" >> selenic.properties
             echo "license.network.password=%LS_PASS%" >> selenic.properties
 
-            mvn test -DfailIfNoTests=false -DargLine=-javaagent:"%WORKSPACE%\\%PROJECT_NAME%\\selenic_agent.jar"=captureDOM=true,screenshot=failures,selfHealing=%SELFHEALING%,createAPITests=false
+            mvn test^
+            -DfailIfNoTests=false^
+            -DargLine=-javaagent:"%WORKSPACE%\\%PROJECT_NAME%\\selenic_agent.jar=captureDOM=true,screenshot=failures,selfHealing=%SELFHEALING%,createAPITests=false"
 
             '''
         sleep 10

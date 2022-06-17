@@ -14,6 +14,12 @@ pipeline {
     stage('Build') {
       steps {
         echo "building"
+        sleep 5
+      }
+    }
+    stage('Test') {
+      steps {
+        echo "testing"
         bat '''
             cd "%PROJECT_NAME%"
             dir
@@ -32,20 +38,15 @@ pipeline {
             -DfailIfNoTests=false^
             -DargLine=-javaagent:"%SELENIC_AGENT%\\selenic_agent.jar"
 
+            call java -jar %SELENIC_AGENT%\\selenic_analyzer.jar -report %WORKSPACE%\\reports\\report.html
             '''
-        sleep 10
-      }
-    }
-    stage('Test') {
-      steps {
-        echo "testing"
         sleep 5
       }
     }
     stage('Deploy') {
       steps {
         echo "deploying"
-        stageMessage "Depliy Complete"
+        echo "Complete!"
       }
     }
   }

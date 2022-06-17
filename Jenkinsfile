@@ -2,13 +2,13 @@ pipeline {
   agent any
   environment {
       PROJECT_NAME = 'com.parasoft.parabank.tests'
-      SELENIC_AGENT = 'src\\test\\resources'
+      SELENIC_AGENT = 'C:\\Eclipse\\eclipse-jee-2021-03-R-win32-x86_64-selenic\\eclipse\\selenic'
       WEBDRIVER_DIR = 'src\\test\\resources'
       SELFHEALING = 'true'
-      LS_HOST = 'https://34.212.121.186'
-      LS_PORT = '8443'
-      LS_UNAME = 'amdin'
-      LS_PASS = 'parasoft.vm'
+      LS_HOST = '******'
+      LS_PORT = '****'
+      LS_UNAME = '****'
+      LS_PASS = '****'
     }
   stages {
     stage('Build') {
@@ -16,7 +16,8 @@ pipeline {
         echo "building"
         bat '''
             cd "%PROJECT_NAME%"
-            
+            dir
+
             echo "selenic.license.use_network=true" >> selenic.properties
             echo "license.network.use.specified.server=true" >> selenic.properties
             echo "license.network.host=%LS_HOST%" >> selenic.properties
@@ -24,10 +25,12 @@ pipeline {
             echo "license.network.auth.enabled=true" >> selenic.properties
             echo "license.network.user=%LS_UNAME%" >> selenic.properties
             echo "license.network.password=%LS_PASS%" >> selenic.properties
+            
+            dir
 
             call mvn test^
             -DfailIfNoTests=false^
-            -DargLine=-javaagent:"%WORKSPACE%\\%PROJECT_NAME%\\selenic_agent.jar"
+            -DargLine=-javaagent:"%SLENIC_AGENT%\\selenic_agent.jar"
 
             '''
         sleep 10

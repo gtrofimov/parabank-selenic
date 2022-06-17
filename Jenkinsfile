@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo "building"
-        bat "cd %PWD%/com.parasoft.parabank.tests
+        bat "cd %PWD%/com.parasoft.parabank.tests"
         bat "mvn clean"
         bat "mvn test"
         sleep 10

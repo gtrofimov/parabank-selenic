@@ -5,7 +5,7 @@ pipeline {
       SELENIC_AGENT = 'src\\test\\resources'
       WEBDRIVER_DIR = 'src\\test\\resources'
       SELFHEALING = 'true'
-      LS_HOST = '34.212.121.186'
+      LS_HOST = 'https://34.212.121.186'
       LS_PORT = '8443'
       LS_UNAME = 'amdin'
       LS_PASS = 'parasoft.vm'

@@ -27,7 +27,7 @@ pipeline {
 
             mvn test^
             -DfailIfNoTests=false^
-            -DargLine=-javaagent:%WORKSPACE%\\%PROJECT_NAME%\\selenic_agent.jar=captureDOM=true,screenshot=failures,selfHealing=%SELFHEALING%,createAPITests=false
+            -DargLine=-javaagent:"%WORKSPACE%\\%PROJECT_NAME%\\selenic_agent.jar"
 
             '''
         sleep 10

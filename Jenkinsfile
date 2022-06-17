@@ -1,11 +1,14 @@
 pipeline {
   agent any
+  environment{
+    PROJECT_NAME = com.parasoft.parabank.tests
+  }
   stages {
     stage('Build') {
       steps {
         echo "building"
         bat '''
-            cd "com.parasoft.parabank.tests"
+            cd "%PROJECT_NAME%"
             mvn test
             '''
         sleep 10

@@ -27,8 +27,7 @@ pipeline {
 
             mvn test^
               -DfailIfNoTests=false^
-              -Dwebdriver.chrome.driver=%PWD%\\%WEBDRIVER_DIR%\\chromedriver.exe^
-              -DargLine=-javaagent:%PWD%\\%SELENIC_AGENT%\\selenic_agent.jar=captureDOM=true,screenshot=failures,selfHealing=%SELFHEALING%,createAPITests=false
+              -DargLine=-javaagent:selenic_agent.jar=captureDOM=true,screenshot=failures,selfHealing=%SELFHEALING%,createAPITests=false
 
             '''
         sleep 10

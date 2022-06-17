@@ -30,7 +30,7 @@ pipeline {
 
             call mvn test^
             -DfailIfNoTests=false^
-            -DargLine=-javaagent:"%SLENIC_AGENT%\\selenic_agent.jar"
+            -DargLine=-javaagent:"%SELENIC_AGENT%\\selenic_agent.jar"
 
             '''
         sleep 10

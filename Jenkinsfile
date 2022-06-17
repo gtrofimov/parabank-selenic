@@ -6,7 +6,6 @@ pipeline {
         echo "building"
         bat '''
             cd "com.parasoft.parabank.tests"
-            mvn clean
             mvn test
             '''
         sleep 10

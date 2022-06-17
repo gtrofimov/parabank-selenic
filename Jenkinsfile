@@ -31,7 +31,7 @@ pipeline {
 
             call mvn test^
             -DfailIfNoTests=false^
-            -DPARABANK_BASE_URL=%HOMEPAGE_URL%
+            -DPARABANK_BASE_URL=%HOMEPAGE_URL%^
             -DargLine=-javaagent:"%SELENIC_AGENT%\\selenic_agent.jar"=captureDOM=true,screenshot=failures,selfHealing=true,createAPITests=false
 
             call java -jar %SELENIC_AGENT%\\selenic_analyzer.jar -report %WORKSPACE%\\reports\\report.html

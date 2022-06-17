@@ -1,14 +1,17 @@
 pipeline {
   agent any
+  environment {
+      PROJECT_NAME = 'com.parasoft.parabank.tests'
+      DB_ENGINE    = 'sqlite'
+    }
   stages {
     stage('Build') {
       steps {
         echo "building"
         bat '''
-          cd ${workspace}\\com.parasoft.parabank.tests"
-          mvn clean
-          mvn test
-          '''
+            cd "%PROJECT_NAME%"
+            mvn test
+            '''
         sleep 10
       }
     }

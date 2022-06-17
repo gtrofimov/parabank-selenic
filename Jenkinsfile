@@ -1,6 +1,6 @@
 pipeline {
   agent any
-  environment{
+  environment {
     PROJECT_NAME = com.parasoft.parabank.tests
   }
   stages {

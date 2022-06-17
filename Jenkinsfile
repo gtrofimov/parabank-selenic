@@ -1,10 +1,9 @@
 pipeline {
   agent any
-  
   environment {
-    PROJECT_NAME = com.parasoft.parabank.tests
-  }
-  
+      PROJECT_NAME = 'com.parasoft.parabank.tests'
+      DB_ENGINE    = 'sqlite'
+    }
   stages {
     stage('Build') {
       steps {

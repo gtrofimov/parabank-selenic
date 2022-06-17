@@ -12,7 +12,6 @@ pipeline {
     stage('Test') {
       steps {
         echo "testing"
-        mvn 
         sleep 30
       }
     }

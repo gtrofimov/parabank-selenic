@@ -7,12 +7,8 @@ com\parasoft\parabank\tests\ADummyTest.class
 com\parasoft\parabank\tests\page\ParaBankErrorPage.class
 com\parasoft\parabank\tests\page\ParaBankLoanRequestPage.class
 com\parasoft\parabank\tests\page\ParaBankAccountActivityPage.class
-com\parasoft\parabank\tests\TransferFundsTest.class
 com\parasoft\parabank\tests\backup\BillPayTestBackup.class
 com\parasoft\parabank\tests\page\ParaBankTransferFundsPage.class
-com\parasoft\parabank\tests\BillPayTest.class
 com\parasoft\parabank\tests\page\ParaBankBillPaymentCompletePage.class
-com\parasoft\parabank\tests\CreateAccountTest.class
 com\parasoft\parabank\tests\page\ParaBankAccountsOverviewPage.class
-com\parasoft\parabank\tests\RequestLoanTest.class
 com\parasoft\parabank\tests\page\ParaBankOpenAccountPage.class

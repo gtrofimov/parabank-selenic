@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.parasoft.parabank.tests.ADummyTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.028 s - in com.parasoft.parabank.tests.ADummyTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.025 s - in com.parasoft.parabank.tests.ADummyTest

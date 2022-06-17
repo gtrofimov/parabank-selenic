@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.parasoft.parabank.tests.RegressionTests
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 16.252 s - in com.parasoft.parabank.tests.RegressionTests
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 18.483 s - in com.parasoft.parabank.tests.RegressionTests

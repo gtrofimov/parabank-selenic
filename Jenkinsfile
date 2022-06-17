@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo "building"
-        bat " mvn clean"
+        bat "mvn clean"
         bat "mvn test"
         sleep 10
       }

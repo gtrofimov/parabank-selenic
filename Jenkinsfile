@@ -5,7 +5,7 @@ pipeline {
       steps {
         echo "building"
         bat '''
-            cd ${workspace}\\com.parasoft.parabank.tests"
+            cd %PWD%\\com.parasoft.parabank.tests"
             mvn clean
             mvn test
             '''

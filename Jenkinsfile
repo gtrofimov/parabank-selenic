@@ -3,7 +3,7 @@ pipeline {
   environment {
       PROJECT_NAME = 'com.parasoft.parabank.tests'
       SELENIC_AGENT = 'C:\\Eclipse\\eclipse-jee-2021-03-R-win32-x86_64-selenic\\eclipse\\selenic'
-      HOMEPAGE_URL = 'http://gamora.parasoft.com:8091'
+      HOMEPAGE_URL = 'http://gamora.parasoft.com:8092'
     }
   stages {
     stage('Build') {

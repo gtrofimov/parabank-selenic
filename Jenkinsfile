@@ -5,6 +5,10 @@ pipeline {
       SELENIC_AGENT = 'src\\test\\resources'
       WEBDRIVER_DIR = 'src\\test\\resources'
       SELFHEALING = 'true'
+      LS_HOST = '34.212.121.186'
+      LS_PORT = '8443'
+      LS_UNAME = 'amdin'
+      LS_PASS = 'parasoft.vm'
     }
   stages {
     stage('Build') {
@@ -15,11 +19,11 @@ pipeline {
             
             echo "selenic.license.use_network=true" >> selenic.properties
             echo "license.network.use.specified.server=true" >> selenic.properties
-            echo "license.network.host=<server where License Server is hosted>" >> selenic.properties
-            echo "license.network.port=<port number for License Server>" >> selenic.properties
+            echo "license.network.host=%LS_HOST%" >> selenic.properties
+            echo "license.network.port=%LS_PORT%" >> selenic.properties
             echo "license.network.auth.enabled=true" >> selenic.properties
-            echo "license.network.user=<username>" >> selenic.properties
-            echo "license.network.password=<password>" >> selenic.properties
+            echo "license.network.user=%LS_UNAME%" >> selenic.properties
+            echo "license.network.password=%LS_PASS%" >> selenic.properties
 
             mvn test^
               -DfailIfNoTests=false^

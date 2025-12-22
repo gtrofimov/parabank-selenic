@@ -25,6 +25,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import java.util.Arrays;
 
 public class RegressionTests {
 
@@ -40,14 +41,15 @@ public class RegressionTests {
 	@Before
 	public void beforeTest() {
 		ChromeOptions opts = new ChromeOptions();
-		opts.addArguments("--start-maximized");
-		opts.addArguments("--disable-geolocation");
-		opts.addArguments("--incognito");
-		opts.addArguments("--enable-strict-powerful-feature-restrictions");
-		opts.addArguments("--headless");
-		opts.addArguments("--no-sandbox");
-		opts.addArguments("--disable-dev-shm-usage");
-		opts.addArguments("--disable-gpu");
+		opts.addArguments(Arrays.asList(
+			"--start-maximized",
+			"--disable-geolocation",
+			"--incognito",
+			"--enable-strict-powerful-feature-restrictions",
+			"--headless",
+			"--no-sandbox",
+			"--disable-dev-shm-usage",
+			"--disable-gpu"));
 		driver = new ChromeDriver(opts);
 		driver.manage().window().maximize();
 	}
@@ -118,7 +120,7 @@ public class RegressionTests {
 		paraBankAccountsOverviewPage.clickOpenNewAccountLink();
 	
 		ParaBankOpenAccountPage paraBankOpenAccountPage = new ParaBankOpenAccountPage(driver);
-		paraBankOpenAccountPage.selectFromAccountIdDropdown("12789");
+		paraBankOpenAccountPage.selectFromAccountIdDropdown("13344");
 		paraBankOpenAccountPage.clickOpenNewAccountButton();
 		paraBankOpenAccountPage.clickLink2();
 	

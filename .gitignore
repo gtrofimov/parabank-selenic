@@ -1,0 +1,68 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+pom.xml.bak
+release.properties
+dependency-reduced-pom.xml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Build
+build/
+dist/
+out/
+
+# Test Reports & Logs
+surefire-reports/
+failsafe-reports/
+*.log
+logs/
+
+# Selenium & WebDriver
+chromedriver
+geckodriver
+drivers/
+*.exe
+*.dll
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment & Configuration
+.env
+.env.local
+.env.*.local
+
+# Java
+*.class
+*.jar
+*.zip
+*.war
+*.rar
+
+# Node (if using any npm dependencies)
+node_modules/
+npm-debug.log
+
+# Screenshots & Downloads (common in Selenium tests)
+screenshots/
+downloads/

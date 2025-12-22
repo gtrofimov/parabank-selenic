@@ -7,6 +7,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.attributeContain
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 import java.util.Arrays;
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,7 +34,7 @@ public class ParaBankErrorPage {
 
 	public ParaBankErrorPage(WebDriver driver) {
 		this.driver = driver;
-		WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_FOR_ELEMENT_TIMEOUT);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_WAIT_FOR_ELEMENT_TIMEOUT));
 		Arrays.stream(TITLE_WORDS).forEach(word -> {
 			wait.until(attributeContains(By.tagName("title"), "innerHTML", word));
 		});
@@ -41,7 +42,7 @@ public class ParaBankErrorPage {
 	}
 
 	private WebElement waitUntilClickable(WebElement element) {
-		WebDriverWait wait = new WebDriverWait(driver, DEFAULT_WAIT_FOR_ELEMENT_TIMEOUT);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_WAIT_FOR_ELEMENT_TIMEOUT));
 		return wait.until(elementToBeClickable(element));
 	}
 

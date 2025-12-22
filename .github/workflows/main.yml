@@ -12,10 +12,23 @@ jobs:
       - name: Build custom Docker image
         run: docker build -t parabank-test:latest -f selenic/Dockerfile .
 
+      - name: Create selenic.properties
+        run: |
+          cat > ${{ github.workspace }}/selenic.properties << 'EOF'
+          parasoft.eula.accepted=true
+          selenic.license.use_network=true
+          selenic.license.network.edition=automation_edition
+          license.network.url=${{ secrets.LSS_URL }}
+          license.network.auth.enabled=true
+          license.network.user=${{ secrets.LSS_USER }}
+          license.network.password=${{ secrets.LSS_PASSWORD }}
+          EOF
+
       - name: Run Maven tests in container
         run: |
           docker run --rm \
             -v ${{ github.workspace }}:/workspace \
             -w /workspace/com.parasoft.parabank.tests \
             parabank-test:latest \
-            mvn -Dmaven.test.failure.ignore=true test
+            bash -c "mvn -Dmaven.test.failure.ignore=true test -DargLine=-javaagent:/selenic/selenic_agent.jar=captureDom=true,selfHealing=true \
+            && java -jar /selenic/selenic_analyzer.jar -settings /workspace/selenic.properties -report report"

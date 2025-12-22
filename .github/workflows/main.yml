@@ -5,15 +5,11 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: maven:3.9.12-temurinjdk-17.0.17-almalinux-9
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '21'
 
       - name: Run Maven tests (ignore test failures)
         working-directory: com.parasoft.parabank.tests

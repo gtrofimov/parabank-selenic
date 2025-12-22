@@ -33,7 +33,7 @@ public class RegressionTests {
 	 * Use -DPARABANK_BASE_URL2=http://localhost:8080 from command line
 	 * or use System.setProperty("PARABANK_BASE_URL2", "http://localhost:8080") to change base URL at run time.
 	 */
-	private static final String PARABANK_BASE_URL = "http://54.185.112.201:8090";
+	private static final String PARABANK_BASE_URL = "https://parabank.parasoft.com";
 
 	private WebDriver driver;
 
@@ -44,6 +44,10 @@ public class RegressionTests {
 		opts.addArguments("--disable-geolocation");
 		opts.addArguments("--incognito");
 		opts.addArguments("--enable-strict-powerful-feature-restrictions");
+		opts.addArguments("--headless");
+		opts.addArguments("--no-sandbox");
+		opts.addArguments("--disable-dev-shm-usage");
+		opts.addArguments("--disable-gpu");
 		driver = new ChromeDriver(opts);
 		driver.manage().window().maximize();
 	}

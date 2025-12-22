@@ -1,7 +1,5 @@
 FROM parasoft/selenic:latest AS selenic
 
-COPY agent.properties agent
-
 FROM jelastic/maven:3.9.12-temurinjdk-21.0.9-almalinux-9
 
 USER root:root

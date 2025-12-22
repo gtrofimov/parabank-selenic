@@ -11,6 +11,12 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Install Chrome and dependencies
+        run: |
+          yum update -y
+          yum install -y chromium chromium-headless
+          yum install -y libXss1 libappindicator1 libgconf-2-4 libxss1 xdg-utils fonts-liberation xfonts-encodings xfonts-utils
+
       - name: Run Maven tests (ignore test failures)
         working-directory: com.parasoft.parabank.tests
         run: mvn -Dmaven.test.failure.ignore=true test

@@ -21,7 +21,7 @@ jobs:
           license.network.url=${{ secrets.LSS_URL }}
           license.network.auth.enabled=true
           license.network.user=${{ secrets.LSS_USER }}
-          license.network.password=${{ secrets.LSS_PASSWORD }}
+          license.network.password=${{ secrets.LSS_PASS }}
           EOF
           echo "selenic.properties created."
 

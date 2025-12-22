@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: maven:3.9.12-temurinjdk-17.0.17-almalinux-9
+      image: jelastic/maven:3.9.12-temurinjdk-21.0.9-almalinux-9
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

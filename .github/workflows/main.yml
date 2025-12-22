@@ -1,0 +1,13 @@
+name: Run Selnium tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a multiline script
+        run: |
+          echo "Starting the script..."
+          echo "This is line 2."
+          echo "This is line 3, which can also run complex commands."

@@ -23,6 +23,7 @@ jobs:
           license.network.user=${{ secrets.LSS_USER }}
           license.network.password=${{ secrets.LSS_PASSWORD }}
           EOF
+          echo "selenic.properties created."
 
       - name: Run Maven tests in container
         run: |

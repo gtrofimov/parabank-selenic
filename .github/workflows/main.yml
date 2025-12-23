@@ -40,5 +40,5 @@ jobs:
           \cp -f selenic.properties selenic/.
           cd ${{ github.workspace }}/com.parasoft.parabank.tests
           mvn -Dmaven.test.failure.ignore=true test \
-            -DargLine=-javaagent:${PWD}/selenic/selenic_agent.jar=captureDom=true,selfHealing=true,data=selenic_data
-          java -jar ${PWD}/selenic/selenic_analyzer.jar -data selenic_data -report report
+            -DargLine=-javaagent:${{ github.workspace }}/selenic/selenic_agent.jar=captureDom=true,selfHealing=true,data=selenic_data
+          java -jar ${{ github.workspace }}/selenic/selenic_analyzer.jar -data selenic_data -report report

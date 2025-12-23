@@ -9,14 +9,18 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Build custom Docker image
-        run: docker build -t parabank-test:latest -f selenic/Dockerfile .
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
 
       - name: Create selenic.properties
         run: |
           cat > ${{ github.workspace }}/selenic.properties << 'EOF'
           parasoft.eula.accepted=true
           selenic.license.use_network=true
+          license.network.use.specified.server=true
           selenic.license.network.edition=automation_edition
           license.network.url=${{ secrets.LSS_URL }}
           license.network.auth.enabled=true
@@ -25,11 +29,19 @@ jobs:
           EOF
           echo "selenic.properties created."
 
-      - name: Run Maven tests in container
+      - name: Copy Selenic from container
         run: |
-          docker run --rm \
-            -v ${{ github.workspace }}:/workspace \
-            -w /workspace/com.parasoft.parabank.tests \
-            parabank-test:latest \
-            bash -c "mvn -Dmaven.test.failure.ignore=true test -DargLine=-javaagent:/selenic/selenic_agent.jar=captureDom=true,selfHealing=true \
-            && java -jar /selenic/selenic_analyzer.jar -settings /workspace/selenic.properties -report report"
+          docker run \
+            --rm \
+            -v "${PWD}:/workspace" \
+            -e ACCEPT_EULA=false \
+            parasoft/selenic \
+            cp -R /opt/parasoft/selenic /workspace/.
+
+      - name: Run Maven tests
+        run: |
+          cd ${{ github.workspace }}/com.parasoft.parabank.tests
+          \cp -f ../selenic.properties selenic/.
+          mvn -Dmaven.test.failure.ignore=true test \
+            -DargLine=-javaagent:${PWD}/workspace/selenic/selenic_agent.jar=captureDom=true,selfHealing=true,data=selenic_data
+          java -jar ${PWD}/workspace/selenic/selenic_analyzer.jar -data selenic_data -report report

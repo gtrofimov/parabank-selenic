@@ -66,3 +66,8 @@ npm-debug.log
 # Screenshots & Downloads (common in Selenium tests)
 screenshots/
 downloads/
+
+# Selenic
+selenic_data/
+report/
+selenic.properties

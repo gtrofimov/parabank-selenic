@@ -16,6 +16,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Cache Selenic Data
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/com.parasoft.parabank.tests/selenic_data
+          key: selenic-data-${{ github.run_id }}
+          restore-keys: |
+            selenic-data-
+
       - name: Create selenic.properties
         run: |
           cat > ${{ github.workspace }}/selenic.properties << 'EOF'

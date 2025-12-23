@@ -43,3 +43,10 @@ jobs:
           mvn -Dmaven.test.failure.ignore=true test \
             -DargLine=-javaagent:${{ github.workspace }}/selenic/selenic_agent.jar=captureDom=true,selfHealing=true,data=selenic_data
           java -jar ${{ github.workspace }}/selenic/selenic_analyzer.jar -data selenic_data -report report
+
+      - name: Upload Selenic Report
+        uses: actions/upload-artifact@v4 # Use the latest version
+        with:
+          name: Selenic Report # Name the artifact (e.g., 'build-results' or 'logs')
+          path: report        # The file, directory, or wildcard pattern to archive
+          retention-days: 90   # Retain the artifact for 90 days

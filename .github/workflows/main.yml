@@ -31,17 +31,14 @@ jobs:
 
       - name: Copy Selenic from container
         run: |
-          docker run \
-            --rm \
-            -v "${PWD}:/workspace" \
-            -e ACCEPT_EULA=false \
-            parasoft/selenic \
-            cp -R /opt/parasoft/selenic /workspace/.
+          CONTAINER_ID=$(docker create parasoft/selenic:latest)
+          docker cp $CONTAINER_ID:/opt/parasoft/selenic ${{ github.workspace }}/.
+          docker rm -v $CONTAINER_ID
 
       - name: Run Maven tests
         run: |
+          \cp -f selenic.properties selenic/.
           cd ${{ github.workspace }}/com.parasoft.parabank.tests
-          \cp -f ../selenic.properties selenic/.
           mvn -Dmaven.test.failure.ignore=true test \
-            -DargLine=-javaagent:${PWD}/workspace/selenic/selenic_agent.jar=captureDom=true,selfHealing=true,data=selenic_data
-          java -jar ${PWD}/workspace/selenic/selenic_analyzer.jar -data selenic_data -report report
+            -DargLine=-javaagent:${PWD}/selenic/selenic_agent.jar=captureDom=true,selfHealing=true,data=selenic_data
+          java -jar ${PWD}/selenic/selenic_analyzer.jar -data selenic_data -report report
